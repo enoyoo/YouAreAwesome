@@ -32,21 +32,14 @@ struct ContentView: View {
             
             HStack {
                 Button("Press Me!") {
-                    let messageA = "You Are Great!"
-                    let messageB = "You Are Awesome!"
-                    let iconA = "hand.thumbsup"
-                    let iconB = "sun.max.fill"
+                    let messageA = "You Are Awesome!"
+                    let messageB = "You Are Great!"
+                    let iconA = "sun.max.fill"
+                    let iconB = "hand.thumbsup"
                     
-                    if messageType == "A" {
-                        icon = iconB
-                        message = messageB
-                        messageType = "B"
-                    }
-                    else {
-                        icon = iconA
-                        message = messageA
-                        messageType = "A"
-                    }
+                    message = (message == messageA ? messageB : messageA)
+                    icon = (icon == iconA ? iconB : iconA)
+                    
                 }
                 .buttonStyle(.borderedProminent)
                 .font(.title2)
