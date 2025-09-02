@@ -9,41 +9,46 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var messageType = "A"
     @State private var message = ""
-    @State private var icon = ""
+    @State private var imageName = ""
+    @State private var imageNumber = 0
     
     var body: some View {
         VStack {
             
             Spacer()
             
-            Image(systemName: icon)
+            Image(imageName)
                 .resizable()
                 .scaledToFit()
-                .foregroundStyle(.orange)
+                .clipShape(RoundedRectangle(cornerRadius: 30))
+                .shadow(radius: 30)
             
             Text(message)
                 .font(.largeTitle)
-                .fontWeight(.ultraLight)
-                .foregroundStyle(.black)
+                .fontWeight(.heavy)
+                .foregroundStyle(.red)
             
             Spacer()
             
             HStack {
-                Button("Press Me!") {
+                Button("Show Message") {
                     let messageA = "You Are Awesome!"
                     let messageB = "You Are Great!"
-                    let iconA = "sun.max.fill"
-                    let iconB = "hand.thumbsup"
-                    
+
                     message = (message == messageA ? messageB : messageA)
-                    icon = (icon == iconA ? iconB : iconA)
+                    
+                    imageName = "image\(imageNumber)"
+                    
+                    imageNumber += 1
+                    
+                    if imageNumber > 9 {
+                        imageNumber = 0
+                    }
                     
                 }
                 .buttonStyle(.borderedProminent)
                 .font(.title2)
-                .tint(.orange)
             }
         }
         .padding()
